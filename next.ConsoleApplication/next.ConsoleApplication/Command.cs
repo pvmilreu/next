@@ -27,5 +27,16 @@ namespace next.ConsoleApplication
         {
             win.Keyboard.Type(VirtualKey.Left);
         }
+
+        public void open()
+        {
+            string title = win.CurrentWindow.GetTitle();
+            bool isPowerPoint = title.Contains("PowerPoint");
+            if(isPowerPoint){
+                win.Keyboard.Type(VirtualKey.F5);
+                return;
+            }
+            win.Keyboard.Type(VirtualKey.F11);
+        }
     }
 }
