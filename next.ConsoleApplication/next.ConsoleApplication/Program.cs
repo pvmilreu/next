@@ -16,11 +16,13 @@ namespace next.ConsoleApplication
             ICamera cam = Camera.Create();
             var win = new Dear.MrWindows();
             Command command = new Command(win, cam);
-            cam.Gestures.SlideRight += (s, a) => command.next();
-            cam.Gestures.SlideLeft += (s, a) => command.previous();
+            Trigger trigger = new Trigger(cam, command);
+            trigger
+                .registerNext()
+                .registerPrevious()
+                .registerOpen();
             cam.Start();
             Console.ReadLine();
         }
-
     }
 }
